@@ -59,8 +59,6 @@ struct SupportView: View {
                 .padding(.horizontal, 16)
                 .padding(.top, 12)
             }
-
-            bottomHelpBar
         }
         .background(Color(hex: "#F8FAFC"))
         .navigationBarTitleDisplayMode(.inline)
@@ -85,7 +83,9 @@ struct SupportView: View {
                 }
             }
         }
-        .background(Color(hex: "#F8FAFC"))
+        .safeAreaInset(edge: .bottom, content: {
+            bottomHelpBar
+        })
         
     }
 }
@@ -213,16 +213,10 @@ extension SupportView {
                     .clipShape(Circle())
             }
         }
-        .padding()
+        .padding(.horizontal, 16)
+        .padding(.top, 14)
         .frame(maxWidth: .infinity)
-        .background(
-            ZStack {
-                Color(hex: "#58A5D5")
-                RoundedCorner(radius: 12, corners: [.topLeft, .topRight])
-                    .stroke(Color(hex: "#479BD0"), lineWidth: 1)
-            }
-        )
-        .cornerRadius(12, corners: [.topLeft, .topRight])
+        .background(Color(hex: "#58A5D5"))
     }
 }
 
